@@ -9,8 +9,11 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update  # O usa 'validate' en producción
+      ddl-auto: update  # O usa 'validate' en producciï¿½n
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
+
+server:
+  port: 8080

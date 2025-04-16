@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/clientes")
@@ -26,6 +27,13 @@ public class ClienteController {
     @GetMapping("/{id}")
     public ResponseEntity<Cliente> consultarClientePorId(@PathVariable Long id) {
         return clienteUseCase.consultarClientePorId(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/identificacion/{identificacion}")
+    public ResponseEntity<Cliente> obtenerCliente(@PathVariable String identificacion) {
+        return clienteUseCase.consultarClientePorIdentificacion(identificacion)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }

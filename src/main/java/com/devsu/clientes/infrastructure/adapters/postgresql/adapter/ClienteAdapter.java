@@ -32,6 +32,12 @@ public class ClienteAdapter implements ClientePostgreSQLGateway {
     }
 
     @Override
+    public Optional<Cliente> obtenerClientePorIdentificacion(String identificacion) {
+        return clienteRepository.findByIdentificacion(identificacion)
+                .map(this::mapToDomain);
+    }
+
+    @Override
     public List<Cliente> obtenerTodosLosClientes() {
         return clienteRepository.findAll()
                 .stream()

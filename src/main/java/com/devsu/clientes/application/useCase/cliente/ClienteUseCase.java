@@ -25,6 +25,11 @@ public class ClienteUseCase implements ClienteCRUDUseCase {
     }
 
     @Override
+    public Optional<Cliente> consultarClientePorIdentificacion(String identificacion) {
+        return clientePostgreSQLGateway.obtenerClientePorIdentificacion(identificacion);
+    }
+
+    @Override
     public List<Cliente> ConsultarClientes() {
         return clientePostgreSQLGateway.obtenerTodosLosClientes();
     }

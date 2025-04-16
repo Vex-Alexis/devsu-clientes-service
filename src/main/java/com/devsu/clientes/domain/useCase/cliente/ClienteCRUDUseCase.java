@@ -9,6 +9,7 @@ public interface ClienteCRUDUseCase {
     Cliente crearCliente(Cliente cliente);
     Cliente actualizarCliente(Long id, Cliente cliente);
     Optional<Cliente> consultarClientePorId(Long id);
+    Optional<Cliente> consultarClientePorIdentificacion(String identificacion);
     List<Cliente> ConsultarClientes();
     void eliminarCliente(Long id);
 }
