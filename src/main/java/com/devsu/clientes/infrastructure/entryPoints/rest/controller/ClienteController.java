@@ -26,16 +26,14 @@ public class ClienteController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Cliente> consultarClientePorId(@PathVariable Long id) {
-        return clienteUseCase.consultarClientePorId(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        Cliente cliente = clienteUseCase.consultarClientePorId(id);
+        return ResponseEntity.status(HttpStatus.OK).body(cliente);
     }
 
     @GetMapping("/identificacion/{identificacion}")
     public ResponseEntity<Cliente> obtenerCliente(@PathVariable String identificacion) {
-        return clienteUseCase.consultarClientePorIdentificacion(identificacion)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        Cliente cliente = clienteUseCase.consultarClientePorIdentificacion(identificacion);
+        return ResponseEntity.status(HttpStatus.OK).body(cliente);
     }
 
     @GetMapping
